@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class parses XML feeds from stackoverflow.com.
+ * This class parses XML feeds from Nisaptham.com.
  * Given an InputStream representation of a feed, it returns a List of entries,
  * where each list element represents a single entry (post) in the XML feed.
  */
@@ -111,7 +111,6 @@ public class StackOverflowXmlParser {
     private String readTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG, ns, "title");
         String title = readText(parser);
-        //title = TamilUtil.convertToTamil(TamilUtil.BAMINI, title);
         parser.require(XmlPullParser.END_TAG, ns, "title");
         return title;
     }
@@ -132,7 +131,6 @@ public class StackOverflowXmlParser {
             }
         }
         else {
-            //parser.require(XmlPullParser.END_TAG, ns, "link");
             parser.nextTag();
         }
         return link;
@@ -146,7 +144,6 @@ public class StackOverflowXmlParser {
         //text.setTypeface(tf);
         //summary.setTypeface(font1);
         //summary = TamilUtil.convertToTamil(TamilUtil.BAMINI, summary);
-        //Log.v("test", summary);
         parser.require(XmlPullParser.END_TAG, ns, "summary");
         return summary;
     }
@@ -171,7 +168,6 @@ public class StackOverflowXmlParser {
         int depth = 1;
         while (depth != 0) {
             int i = parser.next();
-            //Log.v("ok", parser.getText());
             switch (i) {
 
                 case XmlPullParser.END_TAG:
